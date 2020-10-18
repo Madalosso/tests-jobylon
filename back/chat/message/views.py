@@ -24,9 +24,12 @@ class MessageView(viewsets.ModelViewSet):
         input_serializer = InputSerializer(data=request.data)
         input_serializer.is_valid(raise_exception=True)
 
-        message = services.message_create(**input_serializer.validated_data)
+        message, thread_id = services.message_create(**input_serializer.validated_data)
 
-        return Response(self.OutputSerializer(instance=message).data, status=status.HTTP_201_CREATED)
+        return Response({
+            'message': self.OutputSerializer(instance=message).data,
+            'thread_id': thread_id,
+        }, status=status.HTTP_201_CREATED)
 
     def list(self, request, *args, **kwargs):
         class InputSerializer(serializers.Serializer):

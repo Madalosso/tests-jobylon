@@ -1,10 +1,10 @@
-from typing import Union
+from typing import Union, Tuple
 
 from message.models import Message, Thread
 from . import queries
 
 
-def message_create(content: str, created_by_id: int, sent_to: list, thread_id: int = None) -> Message:
+def message_create(content: str, created_by_id: int, sent_to: list, thread_id: int = None) -> Tuple[Message, int]:
     if not thread_id:
         thread = Thread.objects.create()
         thread.participants.set([created_by_id] + sent_to)
@@ -14,7 +14,7 @@ def message_create(content: str, created_by_id: int, sent_to: list, thread_id: i
     message = Message.objects.create(content=content, created_by_id=created_by_id, thread_id=thread_id)
     message.sent_to.set(sent_to)
     message.save()
-    return message
+    return message, thread_id
 
 
 def thread_get_by_participants(participants: list) -> Union[Thread, None]:
