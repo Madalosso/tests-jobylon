@@ -37,7 +37,7 @@ POSTGRESQL_PASS=postgres
 
 ### Setting up and running
 1. Run `pip install -r requirements.txt` (do not forget to activate your virtual environment if needed)
-2. On the same directory level that manage.py run `python manage.py makemigrations && python manage.py migrate && python manage.py runserver`
+2. On the same directory level that manage.py run `python manage.py runserver`
 
 All right, backend is all set up!
 
