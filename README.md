@@ -30,18 +30,18 @@ POSTGRESQL_PASS=postgres
 2. Create a **.env** file on backend project directory **back/chat/chat**
 3. Fill the database variables **POSTGRESQL_DB, POSTGRESQL_HOST, POSTGRESQL_PORT, POSTGRESQL_USER and POSTGRESQL_PASS** on .env file with your database settings
 
-4. **(with or without docker)** On the same directory level that manage.py run `python manage.py migrate`
-
 * There is also two optional keys that you can add to the .env file: **SECRET_KEY** and **DEBUG** (default is False)
 * There is a **.env.example** with all keys if you get lost somehow
 
 ### Setting up and running
 1. Run `pip install -r requirements.txt` (do not forget to activate your virtual environment if needed)
-2. On the same directory level that manage.py run `python manage.py makemigrations && python manage.py migrate && python manage.py runserver`
+2. On the same directory level that manage.py run `python manage.py migrate && python manage.py runserver`
 
 All right, backend is all set up!
 
-## Frontend
+## Frontend (must have node.js 12.x+ and yarn or npx installed - www.nodejs.org | www.npmjs.com/package/npx | www.yarnpkg.com/)
+After Node and yarn/npx are installed, proceed
+
 ### Setting up modules
 #### With npm
 1. Run `npm install` on same directory level of packege.json
@@ -50,4 +50,4 @@ All right, backend is all set up!
 1. Run `yarn` on same directory level of packege.json
 
 ### Running Frontend
-1. Run `next dev` or `yarn dev` for developer enviroment or `next build` or `yarn dev`
+1. Run `npx dev` or `yarn dev` for developer environment or `npx build` or `yarn build` for create a production environment
