@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from "react";
-import { IUser } from "../pages/index";
+import { IUser } from "../pages/chat";
 import { Container } from "../styles/components/UserButton";
 
 interface IUserButtonProps {

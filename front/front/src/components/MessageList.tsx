@@ -1,16 +1,17 @@
-import { IUser, IMessage } from "../pages/index";
+import { IUser, IMessage } from "../pages/chat";
 import { useFetch } from "../hooks/useFetch";
 import { Container, Message } from "../styles/components/MessageList";
-
-const loggedUser = 6;
+import { useAuth } from "../hooks/useAuth";
 
 interface IMessageListProps {
   user: IUser;
 }
 
 export default function MessageList({ user }: IMessageListProps) {
+  const { user: loggedUser } = useAuth();
+
   const { data: messages } = useFetch<IMessage[]>(
-    `/api/messages/?participants=${user.id}&participants=${loggedUser}`
+    `/api/messages/?participants=${user.id}&participants=${loggedUser.id}`
   );
 
   if (!messages) {
@@ -21,7 +22,7 @@ export default function MessageList({ user }: IMessageListProps) {
     <Container>
       {messages.map((message) => (
         <Message
-          fromLoggedUser={message.created_by === loggedUser}
+          fromLoggedUser={message.created_by === loggedUser.id}
           key={message.id}
         >
           <div>

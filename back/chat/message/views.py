@@ -1,8 +1,9 @@
 from rest_framework import viewsets, serializers, status
+from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from message import services
-from message.models import Message
+from message.models import Message, Thread
 
 
 class MessageView(viewsets.ModelViewSet):

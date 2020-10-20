@@ -4,24 +4,30 @@ import Link from "next/link";
 
 import { FormHandles } from "@unform/core";
 import TextInput from "../components/TextInput";
-import { Container, Form } from "../styles/pages/SignIn";
+import { Container, Form } from "../styles/pages/SignUp";
 import { useAuth } from "../hooks/useAuth";
+import api from "../services/api";
 
-interface SignInData {
+interface SignUpData {
+  firstName: string;
+  lastName: string;
+  email: string;
   username: string;
   password: string;
 }
 
-export default function SignIn() {
+export default function SingUp() {
   const router = useRouter();
   const formRef = useRef<FormHandles>(null);
-  const { user, signIn } = useAuth();
+  const { signIn } = useAuth();
 
   const [signInError, setSignInError] = useState(false);
 
   const handleSubmit = useCallback(
-    async (data: SignInData) => {
+    async (data: SignUpData) => {
       try {
+        await api.post("api/users/", data);
+
         await signIn(data);
 
         router.push("/chat");
@@ -38,17 +44,20 @@ export default function SignIn() {
       <Form ref={formRef} onSubmit={handleSubmit}>
         <h1>Login to start chatting</h1>
 
-        {signInError && <p>username and password don't match</p>}
+        {signInError && <p>error creating account</p>}
 
         <div>
+          <TextInput name="first_name" label="First Name" />
+          <TextInput name="last_name" label="Last name" />
+          <TextInput name="email" label="E-mail" type="email" />
           <TextInput name="username" label="Username" />
           <TextInput name="password" label="Password" type="password" />
 
-          <button type="submit">Log In</button>
+          <button type="submit">Create Account</button>
         </div>
 
         <span>
-          Don't have an account? <Link href="/signup">Sign Up Now!</Link>
+          Already have an account? <Link href="/">Sign In!</Link>
         </span>
       </Form>
     </Container>

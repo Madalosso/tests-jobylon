@@ -1,12 +1,13 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
+from rest_framework.exceptions import ValidationError
 
 
 def user_authenticate(*, username: str, password: str) -> User:
     user = authenticate(username=username, password=password)
     if not user:
-        raise PermissionError("Invalid credentials")
+        raise ValidationError("Invalid credentials")
     return user
 
 
