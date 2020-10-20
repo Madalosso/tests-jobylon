@@ -30,14 +30,12 @@ POSTGRESQL_PASS=postgres
 2. Create a **.env** file on backend project directory **back/chat/chat**
 3. Fill the database variables **POSTGRESQL_DB, POSTGRESQL_HOST, POSTGRESQL_PORT, POSTGRESQL_USER and POSTGRESQL_PASS** on .env file with your database settings
 
-4. **(with or without docker)** On the same directory level that manage.py run `python manage.py migrate`
-
 * There is also two optional keys that you can add to the .env file: **SECRET_KEY** and **DEBUG** (default is False)
 * There is a **.env.example** with all keys if you get lost somehow
 
 ### Setting up and running
 1. Run `pip install -r requirements.txt` (do not forget to activate your virtual environment if needed)
-2. On the same directory level that manage.py run `python manage.py runserver`
+2. On the same directory level that manage.py run `python manage.py migrate && python manage.py runserver`
 
 All right, backend is all set up!
 
