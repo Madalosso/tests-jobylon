@@ -39,7 +39,9 @@ POSTGRESQL_PASS=postgres
 
 All right, backend is all set up!
 
-## Frontend
+## Frontend (must have node.js 12.x+ and yarn or npx installed - www.nodejs.org | www.npmjs.com/package/npx | www.yarnpkg.com/)
+After Node and yarn/npx are installed, proceed
+
 ### Setting up modules
 #### With npm
 1. Run `npm install` on same directory level of packege.json
@@ -48,4 +50,4 @@ All right, backend is all set up!
 1. Run `yarn` on same directory level of packege.json
 
 ### Running Frontend
-1. Run `next dev` or `yarn dev` for developer enviroment or `next build` or `yarn dev`
+1. Run `npx dev` or `yarn dev` for developer environment or `npx build` or `yarn build` for create a production environment
