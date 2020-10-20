@@ -35,7 +35,7 @@ POSTGRESQL_PASS=postgres
 
 ### Setting up and running
 1. Run `pip install -r requirements.txt` (do not forget to activate your virtual environment if needed)
-2. On the same directory level that manage.py run `python manage.py migrate && python manage.py runserver`
+2. On the same directory level that manage.py run `python manage.py migrate && python manage.py runserver` or `python3 manage.py migrate && python3 manage.py runserver`
 
 All right, backend is all set up!
 
@@ -50,4 +50,4 @@ After Node and yarn/npx are installed, proceed
 1. Run `yarn` on same directory level of packege.json
 
 ### Running Frontend
-1. Run `npx dev` or `yarn dev` for developer environment or `npx build` or `yarn build` for create a production environment
+1. Run `npx dev` or `yarn dev` for developer environment or `npx build` or `yarn build` for create a production environment then `npx start` or `yarn start` to run the production enviroment
